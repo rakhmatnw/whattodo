@@ -1,0 +1,23 @@
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="email"] {
+  font-size: 1rem;
+  padding: 1rem;
+  margin: .25rem;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: $border-rounded;
+  box-shadow: $soft-shadow;
+  transition: $smooth-trans;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.form-group-inline {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+}
