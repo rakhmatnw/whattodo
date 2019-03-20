@@ -13,9 +13,19 @@
 }
 
 .flex-center {
-  height: 90vh;
+  height: 100vh;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.DefaultLayout {
+  background:
+    linear-gradient(
+      120deg,
+      rgba(223, 228, 234, 0.9) 50%,
+      rgba(223, 228, 234, 0.5)
+    ),url(./../assets/bg.jpg);
+  background-size: cover;
 }
