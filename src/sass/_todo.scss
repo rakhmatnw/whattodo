@@ -1,0 +1,68 @@
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  .btn {
+    &-group {
+    width: 125px;
+    text-align: right;
+    }
+  }
+
+  &__item {
+    background: #fff;
+    padding: 1rem;
+    margin: .5rem 0;
+    border-radius: $border-rounded;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: $smooth-trans;
+    box-shadow: 
+      0 5px 10px -8px rgba($color: #000000, $alpha: 0.5);
+
+    &.disabled {
+      background: #eee;
+      box-shadow: none;
+    }
+
+    .checkbox {
+      &-wrapper {
+        display: flex;
+        align-items: center;
+      }
+
+      &__input {
+        display: hidden;
+      }
+
+      &__content {
+        margin-left: 1rem;
+
+        &.disabled {
+          text-decoration: line-through;
+          color: #ccc;
+
+          & > .checkbox__content__date,
+          & > .checkbox__content__desc {
+            color: #ccc;
+          }
+        }
+
+        &__title {
+          font-weight: bold;
+          font-size: 1.5rem;
+        }
+
+        &__desc {
+          color: rgba($color: #000000, $alpha: 0.75);
+        }
+
+        &__date {
+          color: green;
+        }
+      }
+    }
+  }
+}

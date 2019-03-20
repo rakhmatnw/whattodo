@@ -1,0 +1,37 @@
+.btn {
+  border: none;
+  font-size: 1rem;
+  padding: .75rem;
+  margin: 0.25rem;
+  border-radius: $border-rounded;
+  background: #fff;
+  cursor: pointer;
+  transition: $smooth-trans;
+
+  &:disabled {
+    box-shadow: none;
+    border: none;
+    background: #ccc;
+    color: #fff;
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &-primary {
+    border: none;
+    background: $primary;
+    color: #fff;
+    width: 100%;
+  }
+
+  &-success {
+    color: $success;
+  }
+
+  &-danger {
+    color: $danger;
+  }
+}
