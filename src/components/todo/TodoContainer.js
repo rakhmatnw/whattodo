@@ -29,11 +29,11 @@ export default class TodoContainer extends Component {
     })
     .then(res => {
       this.setState({
-        todos: res.data
+        todos: res.data.data
       })
     })
     .catch(err => {
-      console.log(err.response);
+      alert(err.response.data.message);
     })
   }
 
@@ -96,15 +96,18 @@ export default class TodoContainer extends Component {
     })
     .then(res => {
       console.log(res.data.message);
+      this.setState({
+        wantToEdit: false
+      })
       this.setNewState();
     })
     .catch(err => {
-      console.log(err.response);
+      alert(err.response.message);
     })
   }
 
   wantToEdit = (id, title, desc, date) => {
-    console.log(moment(date).format("YYYY-MM-DD"))
+    console.log(moment(date).format("YYYY-MM-DD"));
     this.setState({
       wantToEdit: true,
       tempTodo: {
@@ -129,10 +132,12 @@ export default class TodoContainer extends Component {
         }
 
         <h2 className="thin primary">Your To Do List</h2>
+
         <ShowTodo 
           data={this.state.todos}
           removeTodo={this.removeTodo}
           wantToEdit={this.wantToEdit}/>
+
       </div>
     )
   }

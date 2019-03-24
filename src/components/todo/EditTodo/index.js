@@ -8,7 +8,7 @@ export default class index extends Component {
     date: ''
   }
 
-  componentDidMount() {
+  componentDidMount(){
     this.setState({
       id: this.props.tempTodo.id,
       title: this.props.tempTodo.title,

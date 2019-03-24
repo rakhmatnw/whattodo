@@ -1,19 +1,51 @@
 import React, { Component } from 'react';
 import {FaEdit, FaTimes} from 'react-icons/fa';
+import Axios from 'axios';
+import moment from 'moment';
+import {Getjwt} from './../../helpers/Getjwt';
 
 export default class TodoItem extends Component {
   state = {
     isChecked: false
   }
 
-  handleCheckboxClick = e => {
+  componentDidMount(){
     this.setState({
-      isChecked: !this.state.isChecked
+      isChecked: this.props.isDone
     })
   }
 
+  handleCheckboxClick = (id, title, desc, date, isDone) => {
+    console.log(isDone);
+    this.setState({
+      isChecked: !this.state.isChecked
+    })
+    // Axios({
+    //   method: 'PUT',
+    //   url: `https://rar-todoapp.herokuapp.com/todo/${id}`,
+    //   headers:{
+    //     'Authorization': Getjwt()
+    //   },
+    //   data: {
+    //     title: {title},
+    //     description: {desc},
+    //     date: {date},
+    //     isDone: {isDone}
+    //   }
+    // })
+    // .then(res => {
+    //   console.log(res)
+    //   this.setState({
+    //     isChecked: !this.state.isChecked
+    //   })
+    // })
+    // .catch(err => {
+    //   console.log(err.response)
+    // })
+  }
+
   render() {
-    const {id, title, desc, date, removeTodo} = this.props;
+    const {id, title, desc, date, removeTodo, isDone} = this.props;
 
     return (
       <li 
@@ -27,7 +59,7 @@ export default class TodoItem extends Component {
             className="checkbox__input" 
             type="checkbox" 
             id={`item-${id}`}
-            onChange={this.handleCheckboxClick}
+            onChange={() => this.handleCheckboxClick(id,title,desc,date,!isDone)}
             />
 
           <span className={`checkbox__content ${this.state.isChecked ? 'disabled' : ''}`}>
@@ -58,6 +90,7 @@ export default class TodoItem extends Component {
             onClick={() => this.props.wantToEdit(id, title, desc, date)}> 
             <FaEdit/> 
           </button>
+          
           <button 
             className="btn btn-danger"
             onClick={() => removeTodo(id)}> 

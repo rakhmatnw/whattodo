@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TodoItem from './TodoItem';
+import moment from 'moment';
 
 export default class index extends Component { 
   render() {
@@ -11,9 +12,10 @@ export default class index extends Component {
           id={item._id} 
           title={item.title}
           desc={item.description} 
-          date={item.date} 
+          date={moment(item.date).format("dddd, DD MMMM YYYY")} 
           removeTodo={this.props.removeTodo}
-          wantToEdit={this.props.wantToEdit}/>
+          wantToEdit={this.props.wantToEdit}
+          isDone={item.isDone}/>
       )
     })
 
